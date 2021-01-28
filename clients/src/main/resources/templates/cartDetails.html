@@ -1,0 +1,57 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Microservice Client</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div style="margin:0 auto; margin-top:10px;width:950px;">
+            <strong>Mon panier</strong>  id: <a th:text= "${cartId}"></a>
+            <table class="table table-bordered">
+                <div th:each="product : ${products}" class="col-md-4 my-1">
+                    <tbody>
+                    <tr class="warning">
+                        <th>productId</th>
+                        <th>quantity</th>
+                        <th>Montant</th>
+                    </tr>
+                    <tr class="active">
+                        <td width="30%">
+                            <p th:text="${product.productId}" ></p>
+                        </td>
+                        <td width="30%">
+                            <p th:text= "${product.quantity}"></p>
+                        </td>
+                        <td width="30%">
+                            <p th:text= "${product.price}"></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+        <div style="text-align:right;margin-right:120px;">
+            Montant total: <strong style="color:#ff6600;" th:text= "${motant}"></strong>
+        </div>
+    </div>
+</div>
+
+    <p style="text-align:right;margin-right:100px;">
+        <a th:href="@{|/cart/return/${cartId}|}">
+            <input value="Returner a la page d'acueill" type="button">
+        </a>
+    </p>
+
+    <p style="text-align:right;margin-right:100px;">
+        <a th:href="@{|/|}">
+            <input value="Order placement" type="button">
+        </a> &nbsp;
+    </p>
+
+
+</body>
+</html>
