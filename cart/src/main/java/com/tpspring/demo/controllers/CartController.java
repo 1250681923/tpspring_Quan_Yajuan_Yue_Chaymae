@@ -48,7 +48,6 @@ public class CartController {
     @Transactional
     public ResponseEntity<CartItem> addProductToCart(@PathVariable Long id, @RequestBody CartItem cartItem)
     {
-        System.out.println("ici");
         Cart cart = cartRepository.getOne(id);
 
         if (cart == null)
