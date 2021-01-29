@@ -1,76 +1,145 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Microservice Client</title>-->
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div style="border: 1px solid #e4e4e4;width:930px;margin-bottom:10px;margin:0 auto;padding:10px;margin-bottom:10px;">-->
+<!--                <div th:if="${cartId} == null" >-->
+<!--                    <a th:href="@{|/|}">Retour &nbsp;&nbsp;&gt;</a>-->
+<!--                </div>-->
+<!--                <div th:if="${cartId} != null" >-->
+<!--                    <a th:href="@{|/cart/return/${cartId}|}">Retour &nbsp;&nbsp;&gt;</a>-->
+<!--                </div>-->
+<!--                <a th:text= "${name}"></a>-->
+<!--            </div>-->
+
+<!--            <div style="margin:0 auto;width:950px;">-->
+<!--                <div class="col-md-6">-->
+<!--                    <img style="opacity: 1;width:400px;height:350px;" title="" class="medium" th:src="${illustration}">-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6">-->
+<!--                    <div><strong th:text= "${name}"></strong></div>-->
+<!--                    <div style="border-bottom: 1px dotted #dddddd;width:350px;margin:10px 0 10px 0;">-->
+<!--                        <div></div>-->
+<!--                    </div>-->
+
+<!--                    <div style="margin:10px 0 10px 0;">Notre prix: <strong style="color:#ef0101;" th:text= "${price}"></strong>-->
+<!--                    </div>-->
+
+<!--                    <div style="padding:10px;border:1px solid #e7dbb1;width:330px;margin:15px 0 10px 0;;background-color: #fffee6;">-->
+<!--                        <div style="margin:5px 0 10px 0;" th:text= "${description}"></div>-->
+
+<!--                        <a>-->
+<!--                            <div th:if="${cartId} == null" >-->
+<!--                                <form action="/cart" method="post">-->
+<!--                                    <input type="submit" value="Create a new Cart">-->
+<!--                                </form>-->
+<!--                                <a th:href="@{|/|}">-->
+<!--                                    <input value="Returner a la page d'acueill" type="button">-->
+<!--                                </a> &nbsp;-->
+<!--                            </div>-->
+<!--                            <div></div>-->
+<!--                            <p>Retourner</p>-->
+<!--                            <div th:if="${cartId} != null" >-->
+<!--                                <form th:action="@{|/cart/${productId}/${cartId}|}"  method="post">-->
+<!--                                    <p>quantity: <input type="text" name="quantity" /></p>-->
+<!--                                    <input value="Ajouter au panier" type="submit">-->
+<!--                                </form>-->
+<!--                                <a th:href="@{|/cart/return/${cartId}|}">-->
+<!--                                    <input value="Returner a la page d'acueill" type="button">-->
+<!--                                </a> &nbsp;-->
+<!--                            </div>-->
+<!--                        </a> &nbsp;-->
+
+<!--                        <div th:if="${quantity} != null" >-->
+<!--                            vous venez d'ajouter <p th:text= "${quantity}"></p> <p th:text= "${name}"></p> dans mon panier-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="clear"></div>-->
+<!--    </div>-->
+
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Microservice Client</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>
+    <!--<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/> -->
+    <!--<link rel="stylesheet" type="text/css" href="static/style/css.css">-->
+    <link th:href="@{/style/css.css}" rel="stylesheet" />
 </head>
+
 <body>
+<div class="header" >
+    <div th:if="${cartId} == null" >
+        <a th:href="@{|/|}">Retour &nbsp;&nbsp;&gt;</a>
+    </div>
+    <div th:if="${cartId} != null" >
+        <a th:href="@{|/cart/return/${cartId}|}">Retour &nbsp;&nbsp;&gt;</a>
+    </div>
+    <h1><a th:text= "${name}"></a></h1>
+</div>
 
-    <div class="container">
-        <div class="row">
-            <div style="border: 1px solid #e4e4e4;width:930px;margin-bottom:10px;margin:0 auto;padding:10px;margin-bottom:10px;">
-                <div th:if="${cartId} == null" >
-                    <a th:href="@{|/|}">Retour &nbsp;&nbsp;&gt;</a>
-                </div>
-                <div th:if="${cartId} != null" >
-                    <a th:href="@{|/cart/return/${cartId}|}">Retour &nbsp;&nbsp;&gt;</a>
-                </div>
-                <a th:text= "${name}"></a>
-            </div>
+<div class="container">
 
-            <div style="margin:0 auto;width:950px;">
-                <div class="col-md-6">
-                    <img style="opacity: 1;width:400px;height:350px;" title="" class="medium" th:src="${illustration}">
-                </div>
-
-                <div class="col-md-6">
-                    <div><strong th:text= "${name}"></strong></div>
-                    <div style="border-bottom: 1px dotted #dddddd;width:350px;margin:10px 0 10px 0;">
-                        <div></div>
-                    </div>
-
-                    <div style="margin:10px 0 10px 0;">Notre prix: <strong style="color:#ef0101;" th:text= "${price}"></strong>
-                    </div>
-
-                    <div style="padding:10px;border:1px solid #e7dbb1;width:330px;margin:15px 0 10px 0;;background-color: #fffee6;">
-                        <div style="margin:5px 0 10px 0;" th:text= "${description}"></div>
-
-                        <a>
-                            <div th:if="${cartId} == null" >
-                                <form action="/cart" method="post">
-                                    <input type="submit" value="Create a new Cart">
-                                </form>
-                                <a th:href="@{|/|}">
-                                    <input value="Returner a la page d'acueill" type="button">
-                                </a> &nbsp;
-                            </div>
-                            <div></div>
-                            <p>Retourner</p>
-                            <div th:if="${cartId} != null" >
-                                <form th:action="@{|/cart/${productId}/${cartId}|}"  method="post">
-                                    <p>quantity: <input type="text" name="quantity" /></p>
-                                    <input value="Ajouter au panier" type="submit">
-                                </form>
-                                <a th:href="@{|/cart/return/${cartId}|}">
-                                    <input value="Returner a la page d'acueill" type="button">
-                                </a> &nbsp;
-                            </div>
-                        </a> &nbsp;
-
-                        <div th:if="${quantity} != null" >
-                            vous venez d'ajouter <p th:text= "${quantity}"></p> <p th:text= "${name}"></p> dans mon panier
-                        </div>
-<!--                        <div th:if="${quantity} == null" >-->
-<!--                            Il y a 0 <p th:text= "${name}"></p> dans mon panier-->
-<!--                        </div>-->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clear"></div>
+    <div class="image">
+        <img title=""  th:src="${illustration}">
     </div>
 
+    <div class="name"><strong th:text= "${name}"></strong></div>
 
+    <div class="price">Notre prix: <strong style="color:#ef0101;" th:text= "${price}"></strong></div>
+
+    <div class="description" th:text= "${description}"></div>
+    <div class="button1">
+        <a>
+            <div th:if="${cartId} == null" >
+                <form action="/cart" method="post">
+                    <input class="button" type="submit" value="Create a new Cart">
+                </form>
+            </div>
+            <div  th:if="${cartId} != null" >
+                <form th:action="@{|/cart/${productId}/${cartId}|}"  method="post">
+                    <p>quantity: <input type="text" name="quantity" /></p>
+                    <input class="button" value="Ajouter au panier" type="submit">
+                </form>
+            </div>
+        </a> &nbsp;
+    </div>
+    <div class="notice" th:if="${quantity} != null" >
+        vous venez d'ajouter<p th:text= "${quantity}"></p> <p th:text= "${name}"></p> dans mon panier
+    </div>
+
+</div>
+<div class="container2">
+
+    <div class="button2">
+        <a>
+            <div th:if="${cartId} == null" >
+                <a th:href="@{|/|}">
+                    <input class="button" value="Returner a la page d'acueill" type="button">
+                </a> &nbsp;
+            </div>
+            <div th:if="${cartId} != null" >
+                <a th:href="@{|/cart/return/${cartId}|}">
+                    <input class="button" value="Returner a la page d'acueill" type="button">
+                </a> &nbsp;
+            </div>
+        </a> &nbsp;
+    </div>
+</div>
+
+<div class="footer"> welcome to our site</div>
 </body>
 </html>

@@ -1,0 +1,95 @@
+.notice{grid-area:notice;}
+.button2{grid-area:return;}
+.button1{grid-area:cart;}
+.description{grid-area:description;}
+.price{grid-area:price;}
+.name{grid-area:name;
+    height: 50px;}
+.detail{grid-area:detail;}
+.image{grid-area:image;}
+
+
+.container{
+    display : grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "image name price"
+            "image description description"
+            "image cart notice";
+    padding:10px;
+    border:1px solid #e7dbb1;
+    margin:15px 0 10px 0;
+    background-color: #fffee6;
+    width: 70%;
+    transform: translate(20%,0%);
+}
+.container2{
+    display : grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto;
+    grid-template-areas:
+            " . return";
+}
+.footer{
+    color: #000000;
+    text-align: left;
+    background-color: #F0F8FF;
+}
+
+
+h1
+{
+    color: #000000;
+    text-align: center;
+    background-color: #F0F8FF;
+}
+
+
+.notice{
+    background-color: bisque;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.button {
+    border: none;
+    color:black;
+    background-color: aquamarine;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+
+section, aside, header, footer
+{
+    border: 4px solid white;
+    padding: 10px;
+}
+
+
+
+header
+{
+    border: 1px solid #e4e4e4;
+    color: coral;
+    width:930px;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+
+
+footer
+{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #AAAAAA;
+    background-color: #F0F8FF;
+    justify-content: center;
+}
