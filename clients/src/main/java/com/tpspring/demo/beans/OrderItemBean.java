@@ -9,6 +9,7 @@ public class OrderItemBean {
 
     private double price;
 
+
     public OrderItemBean() {
 
     }
