@@ -1,3 +1,62 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Microservice Client</title>-->
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:if="${cartId} == null" >-->
+<!--    <div align="right" class="col-md-5" style="padding-top:20px">-->
+<!--        <ol class="list-inline">-->
+<!--            <li>-->
+<!--                <form action="/cart" method="post">-->
+<!--                    <input type="submit" value="Create a new Cart">-->
+<!--                </form>-->
+<!--            </li>-->
+<!--        </ol>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<p style="text-align:right;margin-right:100px;">-->
+<!--    <a th:href="@{|/order|}">-->
+<!--        <input value="Voir list de Order" type="button">-->
+<!--    </a> &nbsp;-->
+<!--</p>-->
+<!--<div th:if="${cartId} != null" >-->
+<!--    <div align="right" class="col-md-5" style="padding-top:20px">-->
+<!--        <ol class="list-inline">-->
+<!--            <li>-->
+<!--                <a th:href="@{|/cart/${cartId}|}" >-->
+<!--                    <input th:href="@{|/cart/${cartId}|}" type="submit" value="Voir mon panier">-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ol>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--    <h1>Microservice Client eCommerce</h1>-->
+<!--    <div class="row">-->
+<!--        <div th:each="product : ${products}" class="col-md-4 my-1">-->
+<!--            <div th:if="${cartId} == null" >-->
+<!--                <a th:href="@{|/product-detail/${product.id}|}" >-->
+<!--                    <img th:src="${product.illustration}"  class="card-img-top" />-->
+<!--                    <p th:text= "${product.name}"></p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div th:if="${cartId} != null" >-->
+<!--                <a th:href="@{|/product-detail/${product.id}/${cartId}|}" >-->
+<!--                    <img th:src="${product.illustration}"  class="card-img-top" />-->
+<!--                    <p th:text= "${product.name}"></p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -16,6 +75,11 @@
         </ol>
     </div>
 </div>
+<p style="text-align:right;margin-right:100px;">
+    <a th:href="@{|/order|}">
+        <input value="Voir list de Order" type="button">
+    </a> &nbsp;
+</p>
 <div th:if="${cartId} != null" >
     <div align="right" class="col-md-5" style="padding-top:20px">
         <ol class="list-inline">

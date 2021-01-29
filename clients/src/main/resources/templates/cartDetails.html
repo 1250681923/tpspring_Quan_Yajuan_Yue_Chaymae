@@ -1,16 +1,102 @@
 
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Microservice Client</title>-->
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div style="margin:0 auto; margin-top:10px;width:950px;">-->
+<!--            <strong>Mon panier</strong>  id: <a th:text= "${cartId}"></a>-->
+<!--            <table class="table table-bordered">-->
+<!--                <div th:each="product : ${products}" class="col-md-4 my-1">-->
+<!--                    <tbody>-->
+<!--                    <tr class="warning">-->
+<!--                        <th>productId</th>-->
+<!--                        <th>quantity</th>-->
+<!--                        <th>Montant</th>-->
+<!--                    </tr>-->
+<!--                    <tr class="active">-->
+<!--                        <td width="30%">-->
+<!--                            <p th:text="${product.productId}" ></p>-->
+<!--                        </td>-->
+<!--                        <td width="30%">-->
+<!--                            <p th:text= "${product.quantity}"></p>-->
+<!--                        </td>-->
+<!--                        <td width="30%">-->
+<!--                            <p th:text= "${product.price}"></p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </div>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--        <div style="text-align:right;margin-right:120px;">-->
+<!--            Montant total: <strong style="color:#ff6600;" th:text= "${motant}"></strong>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--    <p style="text-align:right;margin-right:100px;">-->
+<!--        <a th:href="@{|/cart/return/${cartId}|}">-->
+<!--            <input value="Returner a la page d'acueill" type="button">-->
+<!--        </a>-->
+<!--    </p>-->
+
+
+<!--    <div th:if="${orderId} == null">-->
+<!--        <form th:action="@{|/order/${cartId}/${motant}|}"  method="post" >-->
+<!--            <input value="Create order" type="submit">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div th:if="${orderId} != null">-->
+<!--        <form th:action="@{|/order/${cartId}/${motant}/${orderId}|}"  method="post" >-->
+<!--            <input value="order placement" type="submit">-->
+<!--        </form>-->
+<!--    </div>-->
+
+<!--&lt;!&ndash;<div th:if="${quantity} != null" >&ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE HTML>-->
+<!--<img  src="https://www.ionos.fr/digitalguide/fileadmin/DigitalGuide/Teaser/bildergalerie-online-t.jpg" alt=" hello " />-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Microservice Client</title>-->
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Microservice Client</title>-->
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>-->
+<!--</head>-->
+
+<!--<body>-->
+
 <!DOCTYPE HTML>
+<img  src="https://www.ionos.fr/digitalguide/fileadmin/DigitalGuide/Teaser/bildergalerie-online-t.jpg" alt=" hello " />
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Microservice Client</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/>
+    <!--<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css} "/> -->
+    <!--<link rel="stylesheet" type="text/css" href="static/style/css.css">-->
+    <link th:href="@{/style/cartDetails.css}" rel="stylesheet" />
 </head>
-<body>
+
 
 <div class="container">
     <div class="row">
         <div style="margin:0 auto; margin-top:10px;width:950px;">
-            <strong>Mon panier</strong>  id: <a th:text= "${cartId}"></a>
+            <strong><h1>Mon panier</h1></strong>  id: <a th:text= "${cartId}"></a>
             <table class="table table-bordered">
                 <div th:each="product : ${products}" class="col-md-4 my-1">
                     <tbody>
@@ -40,25 +126,43 @@
     </div>
 </div>
 
+
+
     <p style="text-align:right;margin-right:100px;">
         <a th:href="@{|/cart/return/${cartId}|}">
             <input value="Returner a la page d'acueill" type="button">
         </a>
+        <div th:if="${orderId} == null">
+            <form th:action="@{|/order/${cartId}/${motant}|}"  method="post" >
+                <input value="Create order" type="submit">
+            </form>
+        </div>
+        <div th:if="${orderId} != null">
+            <form th:action="@{|/order/${cartId}/${motant}/${orderId}|}"  method="post" >
+                <input value="order placement" type="submit">
+            </form>
+        </div>
     </p>
 
 
-    <div th:if="${orderId} == null">
-        <form th:action="@{|/order/${cartId}/${motant}|}"  method="post" >
-            <input value="Create order" type="submit">
-        </form>
-    </div>
-    <div th:if="${orderId} != null">
-        <form th:action="@{|/order/${cartId}/${motant}/${orderId}|}"  method="post" >
-            <input value="order placement" type="submit">
-        </form>
-    </div>
 
-<!--<div th:if="${quantity} != null" >-->
+<!--    <p style="text-align:right;margin-right:100px;">-->
+<!--        <div th:if="${orderId} == null">-->
+<!--            <form th:action="@{|/order/${cartId}/${motant}|}"  method="post" >-->
+<!--                <input value="Create order" type="submit">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div th:if="${orderId} != null">-->
+<!--            <form th:action="@{|/order/${cartId}/${motant}/${orderId}|}"  method="post" >-->
+<!--                <input value="order placement" type="submit">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </p>-->
 
+
+
+    <div class="footer">
+        <footer>All rights resevered by Groupe 6</footer>
+    </div>
 </body>
 </html>
