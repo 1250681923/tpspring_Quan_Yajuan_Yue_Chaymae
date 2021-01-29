@@ -46,12 +46,19 @@
         </a>
     </p>
 
-    <p style="text-align:right;margin-right:100px;">
-        <form th:action="@{|/order/${cartId}/${motant}/${cartId}|}"  method="post" >
-            <input value="Order placement" type="submit">
-        </form>
-    </p>
 
+    <div th:if="${orderId} == null">
+        <form th:action="@{|/order/${cartId}/${motant}|}"  method="post" >
+            <input value="Create order" type="submit">
+        </form>
+    </div>
+    <div th:if="${orderId} != null">
+        <form th:action="@{|/order/${cartId}/${motant}/${orderId}|}"  method="post" >
+            <input value="order placement" type="submit">
+        </form>
+    </div>
+
+<!--<div th:if="${quantity} != null" >-->
 
 </body>
 </html>

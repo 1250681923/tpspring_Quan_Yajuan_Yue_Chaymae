@@ -1,8 +1,8 @@
 package com.tpspring.demo.repositories;
 
-import com.tpspring.demo.domain.Order;
+import com.tpspring.demo.domain.Orderz;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface OrderRespository extends JpaRepository<Order, Long> {
+public interface OrderzRespository extends JpaRepository<Orderz, Long> {
 }

@@ -1,9 +1,10 @@
 package com.tpspring.demo.controllers;
 
-import com.tpspring.demo.domain.Order;
 import com.tpspring.demo.domain.OrderItem;
+import com.tpspring.demo.domain.Orderz;
 import com.tpspring.demo.repositories.OrderItemRepository;
-import com.tpspring.demo.repositories.OrderRespository;
+import com.tpspring.demo.repositories.OrderzRespository;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,47 +18,59 @@ import java.util.Optional;
 @RestController
 public class OrderController {
     @Autowired
-    OrderRespository orderRespository;
+    OrderzRespository orderzRespository;
 
     @Autowired
     OrderItemRepository orderItemRepository;
 
-//    @PostMapping(value = "/cart")
-//    public ResponseEntity<Order> createNewOrder()
-//    {
-//        Cart cart = cartRepository.save(new Cart());
-//
-//        if (cart == null)
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't create a new cart");
-//
-//        return new ResponseEntity<Cart>(cart, HttpStatus.CREATED);
-//    }
+    @PostMapping(value = "/order")
+    public ResponseEntity<Orderz> createNewOrder()
+    {
+        Orderz order = orderzRespository.save(new Orderz());
+
+        if (order == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't create a new order");
+
+        return new ResponseEntity<Orderz>(order, HttpStatus.CREATED);
+    }
+
+
+    @GetMapping(value = "/order/{orderId}")
+    public Optional<Orderz> getOrder(@PathVariable Long orderId)
+    {
+        Optional<Orderz> orderz = orderzRespository.findById(orderId);
+
+        if (orderz == null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Couldn't get order");
+
+        return orderz;
+    }
+
+
 
     @GetMapping(value = "/order")
-    public List<Order> getAllOrder()
+    public List<Orderz> getAllOrder()
     {
-        List<Order> orderList = orderRespository.findAll();
+        List<Orderz> orderList = orderzRespository.findAll();
 
         return orderList;
     }
 
-    @PostMapping(value = "/order/{cartId}/{montant}/{a}")
+    @PostMapping(value = "/order/{cartId}/{motant}/{orderId}")
     @Transactional
-    public ResponseEntity<OrderItem> addProductToOrder(@PathVariable Long cartId, @RequestBody OrderItem orderItem,@PathVariable int a, @PathVariable double montant)
+    public ResponseEntity<OrderItem> addProductToOrder( @RequestBody OrderItem orderItem,@PathVariable Long cartId,@PathVariable Long orderId, @PathVariable double motant)
     {
-        if (a == 1){
-            Order order = orderRespository.save(new Order());
-        }
 
-        Order order = orderRespository.getOne(cartId);
+        Orderz orderz = orderzRespository.getOne(orderId);
 
-        if (order == null)
+        if (orderz == null)
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Couldn't get order");
 
-        order.addProducts(orderItem);
+        orderItemRepository.save(orderItem);
+        orderz.addProducts(orderItem);
 
-        order.setMontant(montant);
-        orderRespository.save(order);
+        orderz.setMontant(motant);
+        orderzRespository.save(orderz);
 
         return new ResponseEntity<>(orderItem, HttpStatus.CREATED);
     }

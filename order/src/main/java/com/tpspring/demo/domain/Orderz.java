@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Order {
+public class Orderz {
     @Id
     @GeneratedValue
     private Long id;
@@ -14,12 +14,12 @@ public class Order {
 
     private double montant;
 
-    public Order(Long id, double montant) {
+    public Orderz(Long id, double montant) {
         this.id = id;
         this.montant = montant;
     }
 
-    public Order() {
+    public Orderz() {
     }
 
     public Long getId() {
