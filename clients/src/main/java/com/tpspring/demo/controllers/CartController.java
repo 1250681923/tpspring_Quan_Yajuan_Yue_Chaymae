@@ -40,6 +40,9 @@ public class CartController {
             motant += productBean.get().getPrice() * cart.get().getProducts().get(i).getQuantity();
         }
 
+
+        int a =1;
+
         model.addAttribute("products", cart.get().getProducts());
         model.addAttribute("cartId", cartId);
         model.addAttribute("motant", motant);

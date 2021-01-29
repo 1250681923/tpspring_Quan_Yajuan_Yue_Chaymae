@@ -23,7 +23,7 @@ public class OrderController {
     OrderItemRepository orderItemRepository;
 
 //    @PostMapping(value = "/cart")
-//    public ResponseEntity<Cart> createNewCart()
+//    public ResponseEntity<Order> createNewOrder()
 //    {
 //        Cart cart = cartRepository.save(new Cart());
 //

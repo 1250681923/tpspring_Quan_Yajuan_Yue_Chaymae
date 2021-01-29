@@ -1,8 +1,6 @@
 package com.tpspring.demo.controllers;
 
-import com.tpspring.demo.beans.CartBean;
-import com.tpspring.demo.beans.OrderBean;
-import com.tpspring.demo.beans.ProductBean;
+import com.tpspring.demo.beans.*;
 import com.tpspring.demo.proxies.MsCartProxy;
 import com.tpspring.demo.proxies.MsOrderProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,13 @@ public class OrderController {
 
         for (int i = 0; i < cart.get().getProducts().size(); i++) {
             int a = 1;
-            msOrderProxy.addProductToOrder(cartId, cart.get().getProducts().get(i),a,montant );
+
+            OrderItemBean orderItem = new OrderItemBean();
+            orderItem.setPrice(cart.get().getProducts().get(i).getPrice());
+            orderItem.setProductId(cart.get().getProducts().get(i).getProductId());
+            orderItem.setQuantity(cart.get().getProducts().get(i).getQuantity());
+            //change
+            msOrderProxy.addProductToOrder(cartId, orderItem,a, montant );
             a++;
         }
 

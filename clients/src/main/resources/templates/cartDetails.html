@@ -47,9 +47,9 @@
     </p>
 
     <p style="text-align:right;margin-right:100px;">
-        <a th:href="@{|/order/${cartId}/${motant}/{cartId}|}">
-            <input value="Order placement" type="button">
-        </a> &nbsp;
+        <form th:action="@{|/order/${cartId}/${motant}/${cartId}|}"  method="post" >
+            <input value="Order placement" type="submit">
+        </form>
     </p>
 
 

@@ -2,6 +2,7 @@ package com.tpspring.demo.proxies;
 
 import com.tpspring.demo.beans.CartItemBean;
 import com.tpspring.demo.beans.OrderBean;
+import com.tpspring.demo.beans.OrderItemBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,5 +19,5 @@ public interface MsOrderProxy {
     public List<OrderBean> getAllOrder();
 
     @PostMapping(value = "/order/{cartId}/{montant}/{a}")
-    public ResponseEntity<CartItemBean> addProductToOrder(@PathVariable Long cartId, @RequestBody CartItemBean orderItem,@PathVariable int a,@PathVariable double montant);
+    public ResponseEntity<CartItemBean> addProductToOrder(@PathVariable Long cartId, @RequestBody OrderItemBean orderItem, @PathVariable int a, @PathVariable double montant);
 }
